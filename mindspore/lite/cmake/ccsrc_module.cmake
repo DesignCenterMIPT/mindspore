@@ -20,9 +20,9 @@ include(${TOP_DIR}/cmake/external_libs/robin.cmake)
 include(${TOP_DIR}/cmake/external_libs/eigen.cmake)
 include(${TOP_DIR}/cmake/external_libs/mkl_dnn.cmake)
 
-find_package(Python3 COMPONENTS Interpreter Development)
+find_package(Python3 COMPONENTS Interpreter)
 if(Python3_FOUND)
-  find_package(Python3 COMPONENTS NumPy Development)
+  find_package(Python3 COMPONENTS NumPy)
 
   if(Python3_NumPy_FOUND)
     include_directories(${Python3_INCLUDE_DIRS})
