@@ -1,4 +1,5 @@
 set(PYTHON_VERSION ${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR})
+set(PYTHON_INTERPRETER_ID ${Python3_INTERPRETER_ID})
 
 if(ENABLE_GITEE)
     if(PYTHON_VERSION MATCHES "3.9")
@@ -15,7 +16,11 @@ if(ENABLE_GITEE)
         return()
     endif()
 else()
-    if(PYTHON_VERSION MATCHES "3.9")
+    if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+        message("Found PyPy (Py ${PYTHON_VERSION})")
+        set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.9.2.tar.gz")
+        set(MD5 "06e4b6c2d0a5d6c6025941203cfcd4b6")
+    elseif(PYTHON_VERSION MATCHES "3.9")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.6.1.tar.gz")
         set(MD5 "32a7811f3db423df4ebfc731a28e5901")
     elseif(PYTHON_VERSION MATCHES "3.8")
@@ -32,7 +37,14 @@ endif()
 set(pybind11_CXXFLAGS "-D_FORTIFY_SOURCE=2 -O2")
 set(pybind11_CFLAGS "-D_FORTIFY_SOURCE=2 -O2")
 
-if(PYTHON_VERSION MATCHES "3.9")
+if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+    mindspore_add_pkg(pybind11
+        VER 2.9.2
+        URL ${REQ_URL}
+        MD5 ${MD5}
+        CMAKE_OPTION -DPYBIND11_TEST=OFF -DPYBIND11_LTO_CXX_FLAGS=FALSE
+        )
+elseif(PYTHON_VERSION MATCHES "3.9")
     mindspore_add_pkg(pybind11
         VER 2.6.1
         URL ${REQ_URL}
