@@ -176,7 +176,10 @@ class Parameter(Tensor_):
 
     def __new__(cls, default_input, *args, **kwargs):
         init_data_flag = bool(isinstance(default_input, Tensor) and default_input.has_init)
-        rc = sys.getrefcount(default_input)
+        rc = 0
+        # PyPy does not support sys.getrefcount() due to its GC model
+        if not 'PyPy' in sys.version:
+            rc = sys.getrefcount(default_input)
         input_class, *class_init_args = Parameter._get_parameter_new_args(default_input, rc)
         new_type = Parameter._get_base_class(input_class)
         obj = input_class.__new__(new_type)
@@ -277,7 +280,8 @@ class Parameter(Tensor_):
             raise ValueError('Parameter data can not be `bool`')
         if isinstance(data, Tensor):
             if not data.has_init:
-                if rc == 4:
+                # PyPy does not support sys.getrefcount() due to its GC model
+                if not 'PyPy' in sys.version and rc == 4:
                     # when ref count is 4, means the input data is not referenced
                     # in other place, so we can make a Tensor without copy data.
                     return (Tensor, data)

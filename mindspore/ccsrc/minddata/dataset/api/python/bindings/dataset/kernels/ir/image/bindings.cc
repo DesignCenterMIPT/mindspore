@@ -682,7 +682,11 @@ PYBIND_REGISTER(
                      std::shared_ptr<vision::RandomSelectSubpolicyOperation>>(*m, "RandomSelectSubpolicyOperation")
       .def(py::init([](const py::list &py_policy) {
         std::vector<std::vector<std::pair<std::shared_ptr<TensorOperation>, double>>> cpp_policy;
-        for (auto &py_sub : py_policy) {
+#if defined(PYPY_VERSION)
+        for (auto py_sub : py_policy) {
+#else
+        for (auto& py_sub : py_policy) {
+#endif
           cpp_policy.push_back({});
           for (auto handle : py_sub.cast<py::list>()) {
             py::tuple tp = handle.cast<py::tuple>();
