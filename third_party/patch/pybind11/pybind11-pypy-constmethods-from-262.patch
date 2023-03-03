@@ -1,0 +1,13 @@
+diff --git a/include/pybind11/pytypes.h b/include/pybind11/pytypes.h
+index 75ea7de..ea9da31 100644
+--- a/include/pybind11/pytypes.h
++++ b/include/pybind11/pytypes.h
+@@ -1761,7 +1761,7 @@ public:
+     detail::list_iterator begin() const { return {*this, 0}; }
+     detail::list_iterator end() const { return {*this, PyList_GET_SIZE(m_ptr)}; }
+     template <typename T>
+-    void append(T &&val) /* py-non-const */ {
++    void append(T &&val) /* py-non-const */ const {
+         PyList_Append(m_ptr, detail::object_or_cast(std::forward<T>(val)).ptr());
+     }
+     template <typename IdxType,
