@@ -1824,6 +1824,8 @@ FunctionBlockPtr Parser::ParseGlobal(const FunctionBlockPtr &block, const py::ob
   MS_LOG(DEBUG) << "Process ast Global";
   MS_EXCEPTION_IF_NULL(block);
   py::list vars = python_adapter::GetPyObjAttr(node, "names");
+// MIPT: PyPy's pybind11 bindings designed to use iterator's value
+//       instead of link, so fix here.
 #if defined(PYPY_VERSION)
   for (auto item : vars) {
 #else

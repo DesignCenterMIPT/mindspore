@@ -2,6 +2,9 @@ set(PYTHON_VERSION ${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR})
 set(PYTHON_INTERPRETER_ID ${Python3_INTERPRETER_ID})
 
 if(ENABLE_GITEE)
+    # MIPT: Use newer version of module for PyPy builds
+    #       due to identation bug that was fixed only in v2.9.2+
+    #       @see https://github.com/pybind/pybind11/commit/5f9b090a915fbaa5904c6bd4a24f888f2ff55db7#diff-2881c4e793b918439a3bba381ab0dbcb932d243676a99b899182ac34ad05363c
     if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
         message("Found PyPy (Py ${PYTHON_VERSION})")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.9.2.tar.gz")
@@ -20,6 +23,7 @@ if(ENABLE_GITEE)
         return()
     endif()
 else()
+    # MIPT: @see above, same here for non-gitee builds
     if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
         message("Found PyPy (Py ${PYTHON_VERSION})")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.9.2.tar.gz")
@@ -42,6 +46,12 @@ set(pybind11_CXXFLAGS "-D_FORTIFY_SOURCE=2 -O2")
 set(pybind11_CFLAGS "-D_FORTIFY_SOURCE=2 -O2")
 set(pybind11_patch ${TOP_DIR}/third_party/patch/pybind11/pybind11.patch001)
 
+# MIPT: Use newer version of module for PyPy builds with additional patches.
+# NOTE: 1st patch suppresses error message about including embed.h in PyPy builds
+#       (mindspore seems not to use embedding mode anyway),
+#       2nd patch rolls back 'const' qualifier for for v2.9.2's
+#       pybind11::list::append() method to align with mindspore code that was designed for v2.6.2.
+# NOTE: existing patch (pybind11.patch001) is not needed anymore for v2.9.2.
 if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
     mindspore_add_pkg(pybind11
         VER 2.9.2

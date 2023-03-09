@@ -177,7 +177,10 @@ class Parameter(Tensor_):
     def __new__(cls, default_input, *args, **kwargs):
         init_data_flag = bool(isinstance(default_input, Tensor) and default_input.has_init)
         rc = 0
-        # PyPy does not support sys.getrefcount() due to its GC model
+        # MIPT: PyPy does not support sys.getrefcount() due to its GC model.
+        # NOTE: Fix leads to always copy-init of new Tensor objects data.
+        #       Done with dev team hint about partial revert of ab3d34aa,
+        #       @see more: https://github.com/DesignCenterTimTech/mindspore/commit/ab3d34aa2fd8080bac24e83fdbe3c00a7061fd4d.
         if not 'PyPy' in sys.version:
             rc = sys.getrefcount(default_input)
         input_class, *class_init_args = Parameter._get_parameter_new_args(default_input, rc)
@@ -280,7 +283,10 @@ class Parameter(Tensor_):
             raise ValueError('Parameter data can not be `bool`')
         if isinstance(data, Tensor):
             if not data.has_init:
-                # PyPy does not support sys.getrefcount() due to its GC model
+                # MIPT: PyPy does not support sys.getrefcount() due to its GC model.
+                # NOTE: Fix leads to always copy-init of new Tensor objects data.
+                #       Done with dev team hint about partial revert of ab3d34aa,
+                #       @see more: https://github.com/DesignCenterTimTech/mindspore/commit/ab3d34aa2fd8080bac24e83fdbe3c00a7061fd4d.
                 if not 'PyPy' in sys.version and rc == 4:
                     # when ref count is 4, means the input data is not referenced
                     # in other place, so we can make a Tensor without copy data.

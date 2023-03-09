@@ -1,4 +1,5 @@
 set(MINDSPORE_PROJECT_DIR ${TOP_DIR})
+set(PYTHON_INTERPRETER_ID ${Python3_INTERPRETER_ID})
 
 find_required_package(Patch)
 
@@ -53,9 +54,19 @@ if(MSLITE_DEPS_LIBEVENT)
 endif()
 
 if(MSLITE_DEPS_PYBIND11)
-    find_package(Python3 COMPONENTS Interpreter)
+    # MIPT: PyPy doesn't ship Development component by default.
+    if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+        find_package(Python3 COMPONENTS Interpreter)
+    else()
+        find_package(Python3 COMPONENTS Interpreter Development)
+    endif()
     if(Python3_FOUND)
-        find_package(Python3 COMPONENTS NumPy)
+        # MIPT: PyPy doesn't ship Development component by default.
+        if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+            find_package(Python3 COMPONENTS NumPy)
+        else()
+            find_package(Python3 COMPONENTS NumPy Development)
+        endif()
         if(Python3_NumPy_FOUND)
             include_directories(${Python3_INCLUDE_DIRS})
             include_directories(${Python3_NumPy_INCLUDE_DIRS})
