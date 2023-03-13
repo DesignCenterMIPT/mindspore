@@ -279,8 +279,13 @@ class SequentialCell(Cell):
             input_data = cell(input_data)
         return input_data
 
-
-class CellList(_CellListBase, Cell):
+# MIPT: changed inheritance order to preserve correct choice of __base__
+#       (and, subsequently, correct __new__ constructor) when creating instance.
+# @see related issues:
+#   https://foss.heptapod.net/pypy/pypy/-/issues/2666#note_45283
+#   https://foss.heptapod.net/pypy/pypy/-/issues/2674#note_163341
+#   https://github.com/python/cpython/issues/64717
+class CellList(Cell, _CellListBase):
     """
     Holds Cells in a list. For more details about Cell, please refer to
     `Cell <https://www.mindspore.cn/docs/en/r1.10/api_python/nn/mindspore.nn.Cell.html#mindspore.nn.Cell>`_.
