@@ -81,7 +81,11 @@ TensorShape::TensorShape(const TensorShape &shape)
 TensorShape::TensorShape(py::list l)
     : raw_shape_(*GlobalContext::Instance()->int_allocator()), strides_(*GlobalContext::Instance()->int_allocator()) {
   std::vector<dsize_t> list_c;
+#if defined(PYPY_VERSION)
+  for (auto i : l) {
+#else
   for (auto &i : l) {
+#endif
     if (!i.is_none()) {
       list_c.push_back(i.cast<int>());
     } else {
