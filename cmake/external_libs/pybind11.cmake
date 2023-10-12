@@ -54,7 +54,6 @@ if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
             URL ${REQ_URL}
             SHA256 ${SHA256}
             CMAKE_OPTION -DPYBIND11_TEST=OFF -DPYBIND11_LTO_CXX_FLAGS=FALSE
-            PATCHES ${pybind11_patch}
             PATCHES ${TOP_DIR}/third_party/patch/pybind11/pybind11-pypy-embedding.patch
             PATCHES ${TOP_DIR}/third_party/patch/pybind11/pybind11-pypy-constmethods-from-262.patch
             )
