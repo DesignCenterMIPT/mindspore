@@ -5,7 +5,7 @@ if(ENABLE_GITEE OR ENABLE_GITEE_EULER) # Channel GITEE_EULER is NOT supported no
     if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
         message("Found PyPy (Py ${PYTHON_VERSION})")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.9.2.tar.gz")
-        set(MD5 "06e4b6c2d0a5d6c6025941203cfcd4b6")
+        set(SHA256 "6bd528c4dbe2276635dc787b6b1f2e5316cf6b49ee3e150264e455a0d68d19c1")
     elseif(PYTHON_VERSION MATCHES "3.7")
         set(REQ_URL "https://gitee.com/mirrors/pybind11/repository/archive/v2.4.3.tar.gz")
         set(SHA256 "182cf9e2c5a7ae6f03f84cf17e826d7aa2b02aa2f3705db684dfe686c0278b36")
@@ -26,7 +26,7 @@ else()
     if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
         message("Found PyPy (Py ${PYTHON_VERSION})")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.9.2.tar.gz")
-        set(MD5 "06e4b6c2d0a5d6c6025941203cfcd4b6")
+        set(SHA256 "6bd528c4dbe2276635dc787b6b1f2e5316cf6b49ee3e150264e455a0d68d19c1")
     elseif(PYTHON_VERSION MATCHES "3.7")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.4.3.tar.gz")
         set(SHA256 "1eed57bc6863190e35637290f97a20c81cfe4d9090ac0a24f3bbf08f265eb71d")
@@ -50,11 +50,11 @@ set(pybind11_patch ${TOP_DIR}/third_party/patch/pybind11/pybind11.patch001)
 
 if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
     mindspore_add_pkg(pybind11
-        VER 2.9.2
-        URL ${REQ_URL}
-        MD5 ${MD5}
-        CMAKE_OPTION -DPYBIND11_TEST=OFF -DPYBIND11_LTO_CXX_FLAGS=FALSE
-        )
+            VER 2.9.2
+            URL ${REQ_URL}
+            SHA256 ${SHA256}
+            CMAKE_OPTION -DPYBIND11_TEST=OFF -DPYBIND11_LTO_CXX_FLAGS=FALSE
+            )
 elseif(PYTHON_VERSION MATCHES "3.7")
     mindspore_add_pkg(pybind11
             VER 2.4.3
