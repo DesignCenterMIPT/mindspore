@@ -17,7 +17,7 @@
 #define PYBIND_API_PYBIND_PATCH_H_
 
 namespace pybind11 {
-// This attribute is built-in for pybind11 version 2.9.2 used for PyPy builds
+// MIPT: This attribute is built-in for pybind11 version 2.9.2 used for PyPy builds.
 #if !defined(PYPY_VERSION)
 PYBIND11_RUNTIME_EXCEPTION(attribute_error, PyExc_AttributeError)
 #endif

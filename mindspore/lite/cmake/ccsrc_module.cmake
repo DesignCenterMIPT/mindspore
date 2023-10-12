@@ -20,9 +20,20 @@ include(${TOP_DIR}/cmake/external_libs/robin.cmake)
 include(${TOP_DIR}/cmake/external_libs/eigen.cmake)
 include(${TOP_DIR}/cmake/external_libs/mkl_dnn.cmake)
 
-find_package(Python3 COMPONENTS Interpreter)
+set(PYTHON_INTERPRETER_ID ${Python3_INTERPRETER_ID})
+# MIPT: PyPy doesn't ship Development component by default.
+if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+    find_package(Python3 COMPONENTS Interpreter)
+else()
+    find_package(Python3 COMPONENTS Interpreter Development)
+endif()
 if(Python3_FOUND)
-  find_package(Python3 COMPONENTS NumPy)
+  # MIPT: PyPy doesn't ship Development component by default.
+  if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+      find_package(Python3 COMPONENTS NumPy)
+  else()
+      find_package(Python3 COMPONENTS NumPy Development)
+  endif()
 
   if(Python3_NumPy_FOUND)
     include_directories(${Python3_INCLUDE_DIRS})
