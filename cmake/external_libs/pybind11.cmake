@@ -1,4 +1,5 @@
 set(PYTHON_VERSION ${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR})
+set(PYTHON_INTERPRETER_ID ${Python3_INTERPRETER_ID})
 
 if(ENABLE_GITEE OR ENABLE_GITEE_EULER) # Channel GITEE_EULER is NOT supported now, use GITEE instead.
     if(PYTHON_VERSION MATCHES "3.7")
@@ -18,7 +19,11 @@ if(ENABLE_GITEE OR ENABLE_GITEE_EULER) # Channel GITEE_EULER is NOT supported no
         return()
     endif()
 else()
-    if(PYTHON_VERSION MATCHES "3.7")
+    if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+        message("Found PyPy (Py ${PYTHON_VERSION})")
+        set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.9.2.tar.gz")
+        set(MD5 "06e4b6c2d0a5d6c6025941203cfcd4b6")
+    elseif(PYTHON_VERSION MATCHES "3.7")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.4.3.tar.gz")
         set(SHA256 "1eed57bc6863190e35637290f97a20c81cfe4d9090ac0a24f3bbf08f265eb71d")
     elseif(PYTHON_VERSION MATCHES "3.8")
@@ -39,7 +44,14 @@ set(pybind11_CXXFLAGS "-D_FORTIFY_SOURCE=2 -O2")
 set(pybind11_CFLAGS "-D_FORTIFY_SOURCE=2 -O2")
 set(pybind11_patch ${TOP_DIR}/third_party/patch/pybind11/pybind11.patch001)
 
-if(PYTHON_VERSION MATCHES "3.7")
+if(PYTHON_INTERPRETER_ID MATCHES "PyPy")
+    mindspore_add_pkg(pybind11
+        VER 2.9.2
+        URL ${REQ_URL}
+        MD5 ${MD5}
+        CMAKE_OPTION -DPYBIND11_TEST=OFF -DPYBIND11_LTO_CXX_FLAGS=FALSE
+        )
+elseif(PYTHON_VERSION MATCHES "3.7")
     mindspore_add_pkg(pybind11
             VER 2.4.3
             URL ${REQ_URL}
