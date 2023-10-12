@@ -1,0 +1,17 @@
+diff --git a/include/pybind11/embed.h b/include/pybind11/embed.h
+index 683f242..94374ba 100644
+--- a/include/pybind11/embed.h
++++ b/include/pybind11/embed.h
+@@ -15,9 +15,9 @@
+ #include <memory>
+ #include <vector>
+ 
+-#if defined(PYPY_VERSION)
+-#    error Embedding the interpreter is not supported with PyPy
+-#endif
++// #if defined(PYPY_VERSION)
++// #    error Embedding the interpreter is not supported with PyPy
++// #endif
+ 
+ #if PY_MAJOR_VERSION >= 3
+ #    define PYBIND11_EMBEDDED_MODULE_IMPL(name)                                                   \
