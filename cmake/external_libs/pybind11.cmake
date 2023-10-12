@@ -6,7 +6,7 @@ if(ENABLE_GITEE OR ENABLE_GITEE_EULER) # Channel GITEE_EULER is NOT supported no
         message("Found PyPy (Py ${PYTHON_VERSION})")
         set(REQ_URL "https://github.com/pybind/pybind11/archive/v2.9.2.tar.gz")
         set(MD5 "06e4b6c2d0a5d6c6025941203cfcd4b6")
-    if(PYTHON_VERSION MATCHES "3.7")
+    elseif(PYTHON_VERSION MATCHES "3.7")
         set(REQ_URL "https://gitee.com/mirrors/pybind11/repository/archive/v2.4.3.tar.gz")
         set(SHA256 "182cf9e2c5a7ae6f03f84cf17e826d7aa2b02aa2f3705db684dfe686c0278b36")
     elseif(PYTHON_VERSION MATCHES "3.8")
