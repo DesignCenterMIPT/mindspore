@@ -535,12 +535,24 @@ class TensorIndex final {
     if (type_ == TensorIndexType::Tuple) {
       output.reserve(tuple_.size());
       for (auto const &e : tuple_) {
+        // MIPT: PyPy's pybind11 bindings designed to use iterator's value
+        //       instead of link, so fix here.
+        #if defined(PYPY_VERSION)
+        auto ee = e.cast<py::handle>();
+        output.emplace_back(TensorIndex(ee));
+        #else
         output.emplace_back(TensorIndex(e));
+        #endif
       }
     } else {
       output.reserve(list_.size());
       for (auto const &e : list_) {
+        #if defined(PYPY_VERSION)
+        auto ee = e.cast<py::handle>();
+        output.emplace_back(TensorIndex(ee));
+        #else
         output.emplace_back(TensorIndex(e));
+        #endif
       }
     }
     return output;

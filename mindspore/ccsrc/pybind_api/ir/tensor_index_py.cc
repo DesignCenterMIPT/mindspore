@@ -163,7 +163,15 @@ TensorIndex TensorIndex::SequenceToTensor(const T &sequence, int64_t dim_size) {
   if (sequence.empty()) {
     return TensorIndex(py::bool_(false));
   }
-  if (std::all_of(sequence.begin(), sequence.end(), [](auto &x) { return py::isinstance<py::bool_>(x); })) {
+  // MIPT: PyPy's pybind11 bindings designed to use iterator's value
+  //       instead of link, so fix here.
+  if (std::all_of(sequence.begin(), sequence.end(), 
+  #if defined(PYPY_VERSION)
+    [](auto x)
+  #else
+    [](auto &x)
+#endif
+  { return py::isinstance<py::bool_>(x); })) {
     int64_t seq_size = SizeToLong(sequence.size());
     if (seq_size != dim_size) {
       MS_EXCEPTION(IndexError) << "dimension is " << dim_size << " but corresponding boolean dimension is " << seq_size;
@@ -731,7 +739,14 @@ py::object TensorIndex::TensorGetitemByTuple(const ShapeVector &data_shape, cons
 
 // ***********************************************for set_item*******************************************
 TensorIndex TensorIndex::FormatList(const TensorIndex &tensor_index, int64_t length) {
-  bool transform_to_array = std::all_of(tensor_index.list_.begin(), tensor_index.list_.end(), [](auto &x) {
+  // MIPT: PyPy's pybind11 bindings designed to use iterator's value
+  //       instead of link, so fix here.
+  bool transform_to_array = std::all_of(tensor_index.list_.begin(), tensor_index.list_.end(), 
+  #if defined(PYPY_VERSION)
+    [](auto x) {
+  #else
+    [](auto &x) {
+  #endif
     return py::isinstance<py::int_>(x) || py::isinstance<py::bool_>(x);
   });
   if (transform_to_array) {
@@ -1295,7 +1310,12 @@ py::object TensorIndex::GetItemByList(const ShapeVector &data_shape, const Tenso
   int64_t data_dim = SizeToLong(data_shape.size());
   JudgeDataDim(data_dim, min_data_dim, max_data_dim);
   bool use_gather = std::all_of(tensor_index.list().begin(), tensor_index.list().end(),
-                                [](auto &x) { return py::isinstance<py::int_>(x) || py::isinstance<py::bool_>(x); });
+                                #if defined(PYPY_VERSION)
+                                  [](auto x) {
+                                #else
+                                  [](auto &x) {
+                                #endif
+                                  return py::isinstance<py::int_>(x) || py::isinstance<py::bool_>(x); });
   if (use_gather) {
     if (data_shape.empty()) {
       MS_EXCEPTION(TypeError) << "Cannot iterate over a scalar tensor.";
