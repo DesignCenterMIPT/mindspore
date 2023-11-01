@@ -1,5 +1,5 @@
 diff --git a/include/pybind11/embed.h b/include/pybind11/embed.h
-index 683f2428..7c6ccbce 100644
+index 683f2428..674d5fec 100644
 --- a/include/pybind11/embed.h
 +++ b/include/pybind11/embed.h
 @@ -15,9 +15,10 @@
@@ -16,18 +16,7 @@ index 683f2428..7c6ccbce 100644
  
  #if PY_MAJOR_VERSION >= 3
  #    define PYBIND11_EMBEDDED_MODULE_IMPL(name)                                                   \
-@@ -67,7 +68,9 @@ PYBIND11_NAMESPACE_BEGIN(detail)
- 
- /// Python 2.7/3.x compatible version of `PyImport_AppendInittab` and error checks.
- struct embedded_module {
--#if PY_MAJOR_VERSION >= 3
-+// MIPT: PyPy does not support native non-specialized function pointers.
-+//       So better use common void* from here.
-+#if PY_MAJOR_VERSION >= 3 && !defined(PYPY_VERSION)
-     using init_t = PyObject *(*) ();
- #else
-     using init_t = void (*)();
-@@ -96,7 +99,9 @@ struct wide_char_arg_deleter {
+@@ -96,7 +97,9 @@ struct wide_char_arg_deleter {
  };
  
  inline wchar_t *widen_chars(const char *safe_arg) {
