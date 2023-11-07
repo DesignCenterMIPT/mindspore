@@ -160,7 +160,7 @@ def test_binary_cross_entropy_loss_grad():
     assert np.allclose(dx[0].asnumpy(), dx1_expect)
 
 
-def test_binary_cross_entropy_forward_functional(nptype):
+def binary_cross_entropy_forward_functional(nptype):
     """
     Feature: test binary_cross_entropy forward for given input dtype.
     Description: test inputs for given input dtype.

@@ -197,7 +197,7 @@ def test_4d_transpose_ab():
     judge_result_correct(output.asnumpy(), expect)
 
 
-def test_bmm_forward_tensor_api(nptype):
+def bmm_forward_tensor_api(nptype):
     """
     Feature: test bmm forward tensor api for given input dtype.
     Description: test inputs for given input dtype.
@@ -220,12 +220,12 @@ def test_bmm_forward_float32_tensor_api():
     Expectation: the result match with expected result.
     """
     context.set_context(mode=context.GRAPH_MODE, device_target="CPU")
-    test_bmm_forward_tensor_api(np.float32)
+    bmm_forward_tensor_api(np.float32)
     context.set_context(mode=context.PYNATIVE_MODE, device_target="CPU")
-    test_bmm_forward_tensor_api(np.float32)
+    bmm_forward_tensor_api(np.float32)
 
 
-def test_bmm_forward_functional_api(nptype):
+def bmm_forward_functional_api(nptype):
     """
     Feature: test bmm forward functional api for given input dtype.
     Description: test inputs for given input dtype.
@@ -248,9 +248,9 @@ def test_bmm_forward_float32_functional_api():
     Expectation: the result match with expected result.
     """
     context.set_context(mode=context.GRAPH_MODE, device_target="CPU")
-    test_bmm_forward_functional_api(np.float32)
+    bmm_forward_functional_api(np.float32)
     context.set_context(mode=context.PYNATIVE_MODE, device_target="CPU")
-    test_bmm_forward_functional_api(np.float32)
+    bmm_forward_functional_api(np.float32)
 
 
 if __name__ == '__main__':
