@@ -58,7 +58,7 @@ def test_net_float64():
     print(output.asnumpy())
 
 
-arr_x = np.array([[0], [1], [2], [3]]).astype(np.bool_)
+arr_x = np.array([[0], [1], [2], [3]]).astype(bool_)
 
 
 @pytest.mark.level1

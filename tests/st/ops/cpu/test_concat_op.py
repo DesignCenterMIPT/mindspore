@@ -120,7 +120,7 @@ def test_axis10_bool():
     Description: Concat with one input of bool dtype
     Expectation: success
     """
-    axis10(np.bool)
+    axis10(bool)
 
 
 class ConcatV32(nn.Cell):
@@ -179,7 +179,7 @@ def test_axis32_bool():
     Description: Concat in axis 2 and bool dtype inputs
     Expectation: success
     """
-    axis32(np.bool)
+    axis32(bool)
 
 
 class ConcatWithList(nn.Cell):
@@ -315,7 +315,7 @@ def test_axis43_bool():
     Description: Concat in axis 3 and bool dtype inputs
     Expectation: success
     """
-    axis43(np.bool)
+    axis43(bool)
 
 
 class ConcatV21(nn.Cell):
@@ -372,7 +372,7 @@ def test_axis21_bool():
     Description: Concat with 2 inputs of bool dtype, asix = 1
     Expectation: success
     """
-    axis21(np.bool)
+    axis21(bool)
 
 
 class Concat3INet(nn.Cell):
@@ -437,9 +437,9 @@ def test_concat_3i_bool():
     """
     cat = Concat3INet()
 
-    x1_np = np.random.choice([True, False], (32, 4, 224, 224)).astype(np.bool)
-    x2_np = np.random.choice([True, False], (32, 8, 224, 224)).astype(np.bool)
-    x3_np = np.random.choice([True, False], (32, 10, 224, 224)).astype(np.bool)
+    x1_np = np.random.choice([True, False], (32, 4, 224, 224)).astype(bool)
+    x2_np = np.random.choice([True, False], (32, 8, 224, 224)).astype(bool)
+    x3_np = np.random.choice([True, False], (32, 10, 224, 224)).astype(bool)
     output_np = np.concatenate((x1_np, x2_np, x3_np), axis=1)
 
     x1_ms = Tensor(x1_np)
@@ -538,10 +538,10 @@ def test_concat_4i_bool():
     """
     cat = Concat4INet()
 
-    x1_np = np.random.choice([True, False], (32, 4, 224, 224)).astype(np.bool)
-    x2_np = np.random.choice([True, False], (32, 8, 224, 224)).astype(np.bool)
-    x3_np = np.random.choice([True, False], (32, 10, 224, 224)).astype(np.bool)
-    x4_np = np.random.choice([True, False], (32, 5, 224, 224)).astype(np.bool)
+    x1_np = np.random.choice([True, False], (32, 4, 224, 224)).astype(bool)
+    x2_np = np.random.choice([True, False], (32, 8, 224, 224)).astype(bool)
+    x3_np = np.random.choice([True, False], (32, 10, 224, 224)).astype(bool)
+    x4_np = np.random.choice([True, False], (32, 5, 224, 224)).astype(bool)
     output_np = np.concatenate((x1_np, x2_np, x3_np, x4_np), axis=1)
 
     x1_ms = Tensor(x1_np)

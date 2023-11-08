@@ -41,12 +41,12 @@ class Assign(nn.Cell):
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 def test_assign_bool():
-    x = Tensor(np.ones([3, 3]).astype(np.bool_))
-    y = Tensor(np.zeros([3, 3]).astype(np.bool_))
+    x = Tensor(np.ones([3, 3]).astype(bool_))
+    y = Tensor(np.zeros([3, 3]).astype(bool_))
     assign = Assign(x, y)
     output = assign()
     output = output.asnumpy()
-    output_expect = np.ones([3, 3]).astype(np.bool_)
+    output_expect = np.ones([3, 3]).astype(bool_)
     print(output)
     assert np.all(output == output_expect)
 

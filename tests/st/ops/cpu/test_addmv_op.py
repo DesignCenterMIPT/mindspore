@@ -19,7 +19,7 @@ import mindspore.context as context
 from mindspore import Tensor
 
 
-def test_addmv_forward_tensor_api(nptype):
+def addmv_forward_tensor_api(nptype):
     """
     Feature: test addmv forward tensor api for given input dtype.
     Description: test inputs for given input dtype.
@@ -36,17 +36,17 @@ def test_addmv_forward_tensor_api(nptype):
 @pytest.mark.level0
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
-def test_addmv_forward_float32_tensor_api():
+def addmv_forward_float32_tensor_api():
     """
     Feature: test addmv forward tensor api.
     Description: test float32 inputs.
     Expectation: the result match with expected result.
     """
     context.set_context(mode=context.GRAPH_MODE, device_target="CPU")
-    test_addmv_forward_tensor_api(np.float32)
+    addmv_forward_tensor_api(np.float32)
     context.set_context(mode=context.PYNATIVE_MODE, device_target="CPU")
-    test_addmv_forward_tensor_api(np.float32)
+    addmv_forward_tensor_api(np.float32)
 
 
 if __name__ == '__main__':
-    test_addmv_forward_float32_tensor_api()
+    addmv_forward_float32_tensor_api()

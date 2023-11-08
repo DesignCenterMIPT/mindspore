@@ -88,7 +88,7 @@ def test_greater_equal_op_dtype_2(mode, dtype):
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 @pytest.mark.parametrize('mode', [context.GRAPH_MODE, context.PYNATIVE_MODE])
-@pytest.mark.parametrize('dtype', [np.bool])
+@pytest.mark.parametrize('dtype', [bool])
 def test_greater_equal_op_dtype_3(mode, dtype):
     """
     Feature: Test GreaterEqual op.

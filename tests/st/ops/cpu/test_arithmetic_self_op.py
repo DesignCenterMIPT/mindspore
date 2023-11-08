@@ -551,7 +551,7 @@ def test_identity_pynative():
     np.testing.assert_almost_equal(output.asnumpy(), input_tensor.asnumpy())
     assert id(input_tensor) != id(output)
 
-    x = np.random.randn(3, 4, 5, 6).astype(np.bool)
+    x = np.random.randn(3, 4, 5, 6).astype(bool)
     input_tensor = Tensor(x)
     output = net(input_tensor)
     np.testing.assert_almost_equal(output.asnumpy(), input_tensor.asnumpy())
@@ -631,7 +631,7 @@ def test_identity_graph():
     np.testing.assert_almost_equal(output.asnumpy(), input_tensor.asnumpy())
     assert id(input_tensor) != id(output)
 
-    x = np.random.randn(3, 4, 5, 6).astype(np.bool)
+    x = np.random.randn(3, 4, 5, 6).astype(bool)
     input_tensor = Tensor(x)
     output = net(input_tensor)
     np.testing.assert_almost_equal(output.asnumpy(), input_tensor.asnumpy())

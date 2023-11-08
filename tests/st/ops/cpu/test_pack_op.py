@@ -38,7 +38,7 @@ class PackNet(nn.Cell):
 @pytest.mark.level0
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
-@pytest.mark.parametrize('dtype', [np.float16, np.float32, np.int32, np.int16, np.uint8, np.bool])
+@pytest.mark.parametrize('dtype', [np.float16, np.float32, np.int32, np.int16, np.uint8, bool])
 def test_pack_graph(dtype):
     """
     Feature: pack operation test

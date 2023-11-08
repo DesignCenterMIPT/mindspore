@@ -170,7 +170,7 @@ def test_unpack_graph_uint8():
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 def test_unpack_graph_bool():
-    unpack(np.bool)
+    unpack(bool)
 
 
 @pytest.mark.level0
@@ -212,4 +212,4 @@ def test_unpack_pynative_uint8():
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 def test_unpack_pynative_bool():
-    unpack_pynative(np.bool)
+    unpack_pynative(bool)
