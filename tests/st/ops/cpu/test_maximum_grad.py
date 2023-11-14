@@ -13,6 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
+import sys
 import numpy as np
 import pytest
 import mindspore.context as context
@@ -35,6 +36,8 @@ class MaxmumGradNet(Cell):
 @pytest.mark.level0
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="no ctypes.pythonapi support")
 def test_maximum_grad_random():
     np.random.seed(0)
     input_x = np.random.normal(0, 1, [2, 3]).astype(np.float32)
