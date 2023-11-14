@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ============================================================================
+import sys
 import os
 import numpy as np
 import pytest
@@ -288,6 +289,8 @@ def test_sort_tensor_api_modes(mode):
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_sort_onnx():
     """
     Feature: test sort op in cpu

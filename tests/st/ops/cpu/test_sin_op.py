@@ -13,6 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
+import sys
 import os
 import numpy as np
 import pytest
@@ -59,6 +60,8 @@ def test_sin():
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_sin_onnx():
     """
     Feature: test sin op in cpu

@@ -13,6 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
+import sys
 import os
 import stat
 import numpy as np
@@ -96,6 +97,8 @@ def test_cos_tensor(dtype):
 
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnx is not supported")
 def test_onnx_export_load_run_ops_cos():
     """
     Feature: Export onnx cos

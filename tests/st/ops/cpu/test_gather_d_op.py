@@ -13,6 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
+import sys
 import os
 import stat
 import numpy as np
@@ -146,6 +147,8 @@ def test_gatherd_cpu_dynamic_shape():
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_gatherd_cpu_onnx():
     """
     Feature: test GatherD op in cpu.

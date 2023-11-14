@@ -13,6 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
+import sys
 import os
 import stat
 import pytest
@@ -131,6 +132,8 @@ class NetReduceAll(nn.Cell):
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_reduce_any_onnx():
     """
     Feature: test ReduceAll op in cpu.
@@ -159,6 +162,8 @@ def test_reduce_any_onnx():
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_reduce_all_onnx():
     """
     Feature: test ReduceAll op in cpu.

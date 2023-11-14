@@ -13,6 +13,7 @@
 # limitations under the License.
 # ============================================================================
 
+import sys
 import os
 import stat
 import numpy as np
@@ -69,6 +70,8 @@ def test_logicalor():
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_logicalor_onnx():
     """
     Feature: Test the function of exporting op LogicalOr to ONNX.

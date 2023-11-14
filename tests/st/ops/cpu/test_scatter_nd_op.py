@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ============================================================================
+import sys
 import numpy as np
 import pytest
 import mindspore.context as context
@@ -347,6 +348,8 @@ def test_scatternd_functional_pynative():
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_scatternd_cpu_onnx():
     """
     Feature: test ScatterNd op in cpu.
