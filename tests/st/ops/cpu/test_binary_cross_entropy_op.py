@@ -184,6 +184,6 @@ def test_binary_cross_entropy_forward_float32_functional():
     Expectation: the result match with expected result.
     """
     context.set_context(mode=context.GRAPH_MODE, device_target="CPU")
-    test_binary_cross_entropy_forward_functional(np.float32)
+    binary_cross_entropy_forward_functional(np.float32)
     context.set_context(mode=context.PYNATIVE_MODE, device_target="CPU")
-    test_binary_cross_entropy_forward_functional(np.float32)
+    binary_cross_entropy_forward_functional(np.float32)
