@@ -70,7 +70,7 @@ def test_slice_vmap():
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 @pytest.mark.parametrize("dtype",
-                         [np.bool, np.int8, np.uint8, np.int16, np.uint16, np.int32, np.uint32, np.int64,
+                         [bool, np.int8, np.uint8, np.int16, np.uint16, np.int32, np.uint32, np.int64,
                           np.uint64, np.float16, np.float32, np.float64])
 def test_slice_functional_with_attr_int32(dtype):
     """
@@ -92,7 +92,7 @@ def test_slice_functional_with_attr_int32(dtype):
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 @pytest.mark.parametrize("dtype",
-                         [np.bool, np.int8, np.uint8, np.int16, np.uint16, np.int32, np.uint32, np.int64,
+                         [bool, np.int8, np.uint8, np.int16, np.uint16, np.int32, np.uint32, np.int64,
                           np.uint64, np.float16, np.float32, np.float64])
 def test_slice_functional_with_attr_int64(dtype):
     """

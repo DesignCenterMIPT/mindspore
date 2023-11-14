@@ -146,7 +146,7 @@ def test_sparse_to_dense_dyn():
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 def test_sparse_to_dense_int():
-    values_types = (np.bool_, np.uint8, np.uint16, np.uint32, np.uint64,
+    values_types = (bool, np.uint8, np.uint16, np.uint32, np.uint64,
                     np.int8, np.int16, np.int32, np.int64)
     for i_type in indices_types:
         for v_type in values_types:

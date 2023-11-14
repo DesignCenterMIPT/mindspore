@@ -296,7 +296,7 @@ def test_gather_tensor(data_type):
     Expectation: the result match to numpy
     """
     x = np.array([1, 2, 3, 4, 5, 6, 7]).astype(data_type)
-    input_indices = Tensor(np.array([0, 2, 4, 2, 6], dtype=np.int))
+    input_indices = Tensor(np.array([0, 2, 4, 2, 6], dtype=int))
     axis = 0
     y_expect = np.array([1, 3, 5, 3, 7]).astype(data_type)
 

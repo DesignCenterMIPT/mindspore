@@ -49,7 +49,7 @@ def test_net():
     x8 = Tensor(np.array([4, 1, -5]).astype(np.uint16))
     x9 = Tensor(np.array([4, 1, -5]).astype(np.uint32))
     x10 = Tensor(np.array([4, 1, -5]).astype(np.uint64))
-    x11 = Tensor(np.array([False, True, False]).astype(np.bool_))
+    x11 = Tensor(np.array([False, True, False]).astype(bool))
 
     net = Net()
     out = net(x0).asnumpy()

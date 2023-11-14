@@ -38,7 +38,7 @@ class Net(Cell):
 @pytest.mark.env_onecard
 def test_cast_bool():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -63,7 +63,7 @@ def test_cast_bool():
 @pytest.mark.env_onecard
 def test_cast_float16():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -88,7 +88,7 @@ def test_cast_float16():
 @pytest.mark.env_onecard
 def test_cast_float32():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -113,7 +113,7 @@ def test_cast_float32():
 @pytest.mark.env_onecard
 def test_cast_float64():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -138,7 +138,7 @@ def test_cast_float64():
 @pytest.mark.env_onecard
 def test_cast_int8():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -163,7 +163,7 @@ def test_cast_int8():
 @pytest.mark.env_onecard
 def test_cast_int16():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -188,7 +188,7 @@ def test_cast_int16():
 @pytest.mark.env_onecard
 def test_cast_int32():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -213,7 +213,7 @@ def test_cast_int32():
 @pytest.mark.env_onecard
 def test_cast_int64():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -238,7 +238,7 @@ def test_cast_int64():
 @pytest.mark.env_onecard
 def test_cast_uint8():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -263,7 +263,7 @@ def test_cast_uint8():
 @pytest.mark.env_onecard
 def test_cast_uint16():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -288,7 +288,7 @@ def test_cast_uint16():
 @pytest.mark.env_onecard
 def test_cast_uint32():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))
@@ -313,7 +313,7 @@ def test_cast_uint32():
 @pytest.mark.env_onecard
 def test_cast_uint64():
     tensor_to_cast = []
-    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.bool)))
+    tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(bool)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float16)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float32)))
     tensor_to_cast.append(Tensor(np.random.uniform(-2, 2, (3, 2)).astype(np.float64)))

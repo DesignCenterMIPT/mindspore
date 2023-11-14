@@ -43,7 +43,7 @@ context.set_context(mode=context.GRAPH_MODE, device_target="CPU")
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 def test_select_float32():
-    cond = np.array([[True, False], [True, False]]).astype(np.bool)
+    cond = np.array([[True, False], [True, False]]).astype(bool)
     x = np.array([[1.2, 1], [1, 0]]).astype(np.float32)
     y = np.array([[1, 2], [3, 4.0]]).astype(np.float32)
     select = Net()
@@ -60,7 +60,7 @@ def test_select_float32():
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 def test_select_float16():
-    cond = np.array([[True, False], [True, False]]).astype(np.bool)
+    cond = np.array([[True, False], [True, False]]).astype(bool)
     x = np.array([[1.2, 1], [1, 0]]).astype(np.float16)
     y = np.array([[1, 2], [3, 4.0]]).astype(np.float16)
     select = Net()
@@ -77,7 +77,7 @@ def test_select_float16():
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 def test_select_int32():
-    cond = np.array([[True, False], [True, False]]).astype(np.bool)
+    cond = np.array([[True, False], [True, False]]).astype(bool)
     x = np.array([[12, 1], [1, 0]]).astype(np.int32)
     y = np.array([[1, 2], [3, 4]]).astype(np.int32)
     select = Net()
@@ -99,7 +99,7 @@ def test_functional_select_scalar():
     Description: Operator select's input `x` is a Tensor with int32 type, input `y` is a int.
     Expectation: Assert result.
     """
-    cond = np.array([[True, False], [True, False]]).astype(np.bool)
+    cond = np.array([[True, False], [True, False]]).astype(bool)
     x = np.array([[12, 1], [1, 0]]).astype(np.int32)
     y = 2
     output = ops.select(Tensor(cond), Tensor(x), y)

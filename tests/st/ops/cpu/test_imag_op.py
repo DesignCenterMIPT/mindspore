@@ -31,7 +31,7 @@ def test_imag_functional_api_modes(mode):
     Expectation: The result match to the expect value.
     """
     context.set_context(mode=mode, device_target="CPU")
-    x = Tensor(np.asarray(np.complex(1.3 + 0.4j)), mstype.complex64)
+    x = Tensor(np.asarray(complex(1.3 + 0.4j)), mstype.complex64)
     output = F.imag(x)
     expected = np.array(0.4, np.float32)
     np.testing.assert_array_equal(output.asnumpy(), expected)
@@ -48,7 +48,7 @@ def test_imag_tensor_api_modes(mode):
     Expectation: The result match to the expect value.
     """
     context.set_context(mode=mode, device_target="CPU")
-    x = Tensor(np.asarray(np.complex(1.3 + 0.4j)), mstype.complex64)
+    x = Tensor(np.asarray(complex(1.3 + 0.4j)), mstype.complex64)
     output = x.imag()
     expected = np.array(0.4, np.float32)
     np.testing.assert_array_equal(output.asnumpy(), expected)

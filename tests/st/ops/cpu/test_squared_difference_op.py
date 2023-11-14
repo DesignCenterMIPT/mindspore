@@ -64,8 +64,8 @@ def test_net01():
     assert np.all(expect2 == output2)
     assert output2.shape == expect2.shape
 
-    x3 = np.random.randn(2, 3).astype(np.bool)
-    y3 = np.random.randn(2, 3).astype(np.bool)
+    x3 = np.random.randn(2, 3).astype(bool)
+    y3 = np.random.randn(2, 3).astype(bool)
     try:
         net(Tensor(x3), Tensor(y3)).asnumpy()
     except TypeError:

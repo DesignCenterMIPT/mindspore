@@ -63,7 +63,7 @@ def test_meshgrid_dshape():
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 @pytest.mark.parametrize('dtype',
-                         [np.bool, np.uint8, np.uint16, np.uint32, np.uint64, np.int8, np.int16, np.int32, np.int64,
+                         [bool, np.uint8, np.uint16, np.uint32, np.uint64, np.int8, np.int16, np.int32, np.int64,
                           np.float16, np.float32, np.float64])
 @pytest.mark.parametrize('indexing', ["xy", "ij"])
 def test_meshgrid(dtype, indexing):
