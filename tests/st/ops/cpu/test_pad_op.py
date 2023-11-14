@@ -71,7 +71,7 @@ class PadNet(nn.Cell):
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
 @pytest.mark.parametrize('mode', [context.GRAPH_MODE, context.PYNATIVE_MODE])
-@pytest.mark.parametrize('dtype', [bool_, np.uint8, np.uint16, np.uint32, np.uint64, np.int8, np.int16, np.int32,
+@pytest.mark.parametrize('dtype', [bool, np.uint8, np.uint16, np.uint32, np.uint64, np.int8, np.int16, np.int32,
                                    np.int64, np.float16, np.float64, np.complex64, np.complex128])
 def test_pad_dtype(mode, dtype):
     """
