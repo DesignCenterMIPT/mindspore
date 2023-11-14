@@ -38,7 +38,7 @@ class OpNetWrapper(nn.Cell):
         return self.op(*inputs)
 
 
-suport_type_list = [bool_, np.int8, np.int16, np.int32, np.int64, np.uint8, np.uint16, np.uint32, np.uint64]
+suport_type_list = [bool, np.int8, np.int16, np.int32, np.int64, np.uint8, np.uint16, np.uint32, np.uint64]
 mode_list = [context.PYNATIVE_MODE, context.GRAPH_MODE]
 
 

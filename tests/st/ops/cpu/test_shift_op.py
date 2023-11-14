@@ -110,7 +110,7 @@ def compare(arr: np.ndarray, periods: int, axis: int, fill_value=np.nan):
                           (np.float64, 0.0), (np.float64, 5.3), (np.float64, -5.5), (np.float64, np.nan),
                           (np.int32, 0), (np.int32, 1), (np.int32, 5), (np.int32, -4),
                           (np.int64, 0), (np.int64, 1), (np.int64, 5), (np.int64, -4),
-                          (bool_, True), (bool_, False)])
+                          (bool, True), (bool, False)])
 @pytest.mark.parametrize('axis', [0, 1, 2, 3])
 def test_no_shift(fill_value, dtype, axis):
     arr = np.random.random((4, 6, 5, 3)).astype(dtype)
@@ -125,7 +125,7 @@ def test_no_shift(fill_value, dtype, axis):
                           (np.float64, 0.0), (np.float64, 5.3), (np.float64, -5.5), (np.float64, np.nan),
                           (np.int32, 0), (np.int32, 1), (np.int32, 5), (np.int32, -4),
                           (np.int64, 0), (np.int64, 1), (np.int64, 5), (np.int64, -4),
-                          (bool_, True), (bool_, False)])
+                          (bool, True), (bool, False)])
 @pytest.mark.parametrize('periods', [-35, 18, 25])
 def test_fancy_1d(fill_value, dtype, periods):
     arr = np.random.random((1, 1, 20, 1)).astype(dtype)
@@ -146,7 +146,7 @@ def test_fancy_1d(fill_value, dtype, periods):
                           (np.float64, 0.0), (np.float64, 5.3), (np.float64, -5.5), (np.float64, np.nan),
                           (np.int32, 0), (np.int32, 1), (np.int32, 5), (np.int32, -4),
                           (np.int64, 0), (np.int64, 1), (np.int64, 5), (np.int64, -4),
-                          (bool_, True), (bool_, False)])
+                          (bool, True), (bool, False)])
 @pytest.mark.parametrize('axis', [0, 1])
 @pytest.mark.parametrize('periods', [-3, 7, -5, 8, 9])
 def test_2d(fill_value, dtype, axis, periods):
@@ -162,7 +162,7 @@ def test_2d(fill_value, dtype, axis, periods):
                           (np.float64, 0.0), (np.float64, 5.3), (np.float64, -5.5), (np.float64, np.nan),
                           (np.int32, 0), (np.int32, 1), (np.int32, 5), (np.int32, -4),
                           (np.int64, 0), (np.int64, 1), (np.int64, 5), (np.int64, -4),
-                          (bool_, True), (bool_, False)])
+                          (bool, True), (bool, False)])
 @pytest.mark.parametrize('axis', [0, 1, 2, 3])
 @pytest.mark.parametrize('periods', [-30, 30, -45, 55])
 def test_4d(fill_value, dtype, axis, periods):
