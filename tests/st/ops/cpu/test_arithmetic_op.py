@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ============================================================================
+import sys
 import os
 import stat
 import numpy as np
@@ -581,6 +582,8 @@ def test_dynamic_sub(dtype):
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_floordiv_cpu_onnx():
     """
     Feature: test FloorDiv op in cpu.
@@ -610,6 +613,8 @@ def test_floordiv_cpu_onnx():
 @pytest.mark.level1
 @pytest.mark.platform_x86_cpu
 @pytest.mark.env_onecard
+# MIPT: skip this test
+@pytest.mark.skipif('PyPy' in sys.version, reason="onnxruntime is not supported")
 def test_floormod_cpu_onnx():
     """
     Feature: test FloorMod op in cpu.
