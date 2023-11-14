@@ -14,6 +14,7 @@
 # ============================================================================
 import sys
 import numpy as np
+import pytest
 
 from mindspore import context, Tensor
 from mindspore.ops import operations as P
